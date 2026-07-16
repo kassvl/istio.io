@@ -60,7 +60,7 @@ check_content() {
     # create a throwaway copy of the content
     cp -R "${DIR}" "${TMP}"
     cp .spelling "${TMP}"
-    cp mdl.rb "${TMP}"
+    cp .markdownlint.yml "${TMP}"
 
     # replace the {{< text >}} shortcodes with ```plain
     find "${TMP}" -type f -name \*.md -exec sed -E -i "s/\\{\\{< text .*>\}\}/\`\`\`plain/g" {} ";"
@@ -80,6 +80,9 @@ check_content() {
     # elide link="*"
     find "${TMP}" -type f -name \*.md -exec sed -E -i "s/link=\".*\"/LINK/g" {} ";"
 
+    # elide branch-name shortcodes so links that embed them stay parseable
+    find "${TMP}" -type f -name \*.md -exec sed -E -i "s/\\{\\{< source_branch_name >\}\}/BRANCH/g" {} ";"
+
     # remove any heading anchors
     find "${TMP}" -type f -name \*.md -exec sed -E -i "s/(^#.*\S) *\{#.*\} */\1/g" {} ";"
 
@@ -91,7 +94,7 @@ check_content() {
         FAILED=1
     fi
 
-    if ! mdl --ignore-front-matter --style mdl.rb .; then
+    if ! markdownlint-cli2 "**/*.md"; then
         FAILED=1
     fi
 
