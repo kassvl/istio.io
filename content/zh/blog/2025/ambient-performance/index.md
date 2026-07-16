@@ -53,9 +53,9 @@ Istio 的性能由 [ztunnel](https://github.com/istio/ztunnel) 驱动，
   版本 `edge-25.2.2`，默认设置
 * <a href="https://cilium.io/">Cilium</a>：
   版本 `v1.16.6`，带有 `kubeProxyReplacement=true`
-  * WireGuard 使用 `encryption.type=wireguard`
-  * IPsec 使用 `encryption.type=ipsec` 和 `GCM-128-AES` 算法
-  * 此外，两种模式均按照
+    * WireGuard 使用 `encryption.type=wireguard`
+    * IPsec 使用 `encryption.type=ipsec` 和 `GCM-128-AES` 算法
+    * 此外，两种模式均按照
     <a href="https://docs.cilium.io/en/stable/operations/performance/tuning/">Cilium 调优指南</a>中的所有建议进行了测试
     （包括 `netkit`、`native` 路由模式、
     BIGTCP（用于 WireGuard；IPsec 不兼容）、BPF 伪装和 BBR 带宽管理器）。

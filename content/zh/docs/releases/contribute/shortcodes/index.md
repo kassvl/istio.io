@@ -92,6 +92,7 @@ Hugo 会自动使用 `caption` 的文本。
 
 有几种方法可以引用 GitHub 的内容或文件：
 
+<!-- markdownlint-disable MD037 -->
 - **{{</* github_file */>}}**，用于引用 GitHub 中的单个文件（例如 yaml 文件）。
   该 Shortcode 会渲染为 `https://raw.githubusercontent.com/istio/istio*`，例如：
 
@@ -112,6 +113,7 @@ Hugo 会自动使用 `caption` 的文本。
     {{< text markdown >}}
     [RawVM MySQL]({{</* github_blob */>}}/samples/rawvm/README.md)
     {{< /text >}}
+<!-- markdownlint-enable MD037 -->
 
 上面的 Shortcode 会根据文档当前的目标分支，生成指向 GitHub 中对应分支的链接。
 要查看当前目标分支的名称，可以使用 `{{</* source_branch_name */>}}` Shortcode

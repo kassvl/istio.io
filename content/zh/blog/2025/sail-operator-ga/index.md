@@ -37,17 +37,17 @@ Sail Operator 的主要资源包括：
 
 ## 主要功能和支持 {#main-features-and-support}
 
-- Istio 控制平面的每个组件都由 Sail Operator 通过专用的 Kubernetes 自定义资源 (CR) 独立管理。
+* Istio 控制平面的每个组件都由 Sail Operator 通过专用的 Kubernetes 自定义资源 (CR) 独立管理。
   Sail Operator 为 `Istio`、`IstioCNI` 和 `ZTunnel` 等组件提供单独的 CRD，
   允许您单独配置、管理和升级它们。此外，还有 `IstioRevision` 和 `IstioRevisionTag` 的 CRD 来管理 Istio 控制平面修订。
-- 支持多个 Istio 版本。目前 1.0.0 版本支持：1.24.3、1.24.2、1.24.1、1.23.5、1.23.4、1.23.3、1.23.0。
-- 支持两种更新策略：`InPlace` 和 `RevisionBased`。查看我们的文档以获取有关支持的更新类型的更多信息。
-- 支持多集群 Istio [部署模型](/zh/docs/setup/install/multicluster/)：
+* 支持多个 Istio 版本。目前 1.0.0 版本支持：1.24.3、1.24.2、1.24.1、1.23.5、1.23.4、1.23.3、1.23.0。
+* 支持两种更新策略：`InPlace` 和 `RevisionBased`。查看我们的文档以获取有关支持的更新类型的更多信息。
+* 支持多集群 Istio [部署模型](/zh/docs/setup/install/multicluster/)：
   多主、主远程、外部控制平面。更多信息和示例请参阅我们的[文档](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#multi-cluster)。
-- Ambient mode support is Alpha: check our specific [documentation](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/common/istio-ambient-mode.md).
-- Ambient 模式支持处于 Alpha 阶段：
+* Ambient mode support is Alpha: check our specific [documentation](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/common/istio-ambient-mode.md).
+* Ambient 模式支持处于 Alpha 阶段：
   请查看我们的具体[文档](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/common/istio-ambient-mode.md)。
-- 插件与 Sail Operator 分开管理。它们可以轻松与 Sail Operator 集成，
+* 插件与 Sail Operator 分开管理。它们可以轻松与 Sail Operator 集成，
   请查看本节的[文档](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#addons)以获取示例和更多信息。
 
 ## 为什么是现在？ {#why-now}
@@ -62,10 +62,10 @@ Sail Operator 为开发人员和运营团队提供了一致、安全且高效的
 这意味着您将同时运行两个 Istio 控制平面，让您轻松迁移工作负载，最大限度地降低流量中断的风险。
 
 先决条件：
-- 运行中的集群
-- Helm
-- Kubectl
-- Istioctl
+* 运行中的集群
+* Helm
+* Kubectl
+* Istioctl
 
 ### 使用 Helm 安装 Sail Operator {#install-the-sail-operator-using-helm}
 
@@ -127,7 +127,7 @@ EOF
 请注意，`IstioRevisionTag` 具有对名称为 `default` 的 `Istio` 资源的目标引用
 
 检查创建的资源的状态：
-- `istiod` Pod 正在运行
+* `istiod` Pod 正在运行
 
     {{< text bash >}}
     $ kubectl get pods -n istio-system
@@ -135,7 +135,7 @@ EOF
     istiod-default-v1-24-2-bd8458c4-jl8zm   1/1     Running   0          3m45s
     {{< /text >}}
 
-- `Istio` 资源被创建
+* `Istio` 资源被创建
 
     {{< text bash >}}
     $ kubectl get istio
@@ -143,7 +143,7 @@ EOF
     default   1           1       1        default-v1-24-2   Healthy   v1.24.2   4m27s
     {{< /text >}}
 
-- `IstioRevisionTag` 资源被创建
+* `IstioRevisionTag` 资源被创建
 
     {{< text bash >}}
     $ kubectl get istiorevisiontag
@@ -260,7 +260,7 @@ sleep-6f87fcf556-k9nh9.sample     Kubernetes     SYNCED (29s)     SYNCED (29s)  
 当 `IstioRevision` 不再使用且不是 `Istio` 资源的活动修订版本时（例如，当它不是 `spec.version` 字段中设置的版本时），
 Sail Operator 将在宽限期（默认为 30 秒）后将其删除。确认删除旧的控制平面和 `IstioRevision`：
 
-- 旧的控制平面 Pod 被删除
+* 旧的控制平面 Pod 被删除
 
     {{< text bash >}}
     $ kubectl get pods -n istio-system
@@ -268,7 +268,7 @@ Sail Operator 将在宽限期（默认为 30 秒）后将其删除。确认删�
     istiod-default-v1-24-3-68df97dfbb-v7ndm   1/1     Running   0          10m
     {{< /text >}}
 
-- 旧的 `IstioRevision` 被删除
+* 旧的 `IstioRevision` 被删除
 
     {{< text bash >}}
     $ kubectl get istiorevision
@@ -276,7 +276,7 @@ Sail Operator 将在宽限期（默认为 30 秒）后将其删除。确认删�
     default-v1-24-3          True    Healthy   True     v1.24.3   13m
     {{< /text >}}
 
-- `Istio` 资源现在只有一个修订版本
+* `Istio` 资源现在只有一个修订版本
 
     {{< text bash >}}
     $ kubectl get istio

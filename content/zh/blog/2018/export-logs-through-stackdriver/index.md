@@ -35,7 +35,7 @@ Istio 支持将日志导出到 Stackdriver，而 Stackdriver 又可以配置为�
 
 1. [`创建 BigQuery 数据集`](https://cloud.google.com/bigquery/docs/datasets) 作为日志导出的目标。
 1. 记录数据集的 ID。这里需要设置 Stackdriver 处理程序。它的格式为 `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]`
-1. 给 [`接收器授权`](https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination)：cloud-logs@system.gserviceaccount.com。它具有 IAM 中的 BigQuery Data Editor 的角色。
+1. 给 [`接收器授权`](https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination)：<cloud-logs@system.gserviceaccount.com>。它具有 IAM 中的 BigQuery Data Editor 的角色。
 1. 如果使用 [`Google Kubernetes Engine`](/zh/docs/setup/platform-setup/gke/)，请确保在集群上启用了 `bigquery` [`Scope`](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create)。
 
 #### Google Cloud Storage (GCS){#google-cloud-storage}
@@ -190,7 +190,7 @@ Istio 支持将日志导出到 Stackdriver，而 Stackdriver 又可以配置为�
     {{< /text >}}
 
 在上面的配置中，sinkInfo 包含有关日志导出到所需接收器的信息。有关如何填写不同接收器的更多信息，请参阅 [`此处`](https://cloud.google.com/logging/docs/export/#sink-terms)。
- 
+
 1. 为 Stackdriver 添加规则
 
     {{< text yaml >}}
