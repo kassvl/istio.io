@@ -101,7 +101,7 @@ aliases:
 
 ## istioctl
 
-* **Додано** параметр `--locality' до `іstioctl experimental workload group create'.
+* **Додано** параметр `--locality` до `istioctl experimental workload group create`.
   ([Тікет #54022](https://github.com/istio/istio/issues/54022))
 
 * **Додано** можливість запуску певних перевірок аналізатором за допомогою команди `istioctl analyze`.

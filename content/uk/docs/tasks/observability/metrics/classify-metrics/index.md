@@ -26,43 +26,43 @@ Istio дозволяє створювати правила класифікац�
     Ця конфігурація є специфічною для конкретного сервісу, оскільки шляхи запитів зазвичай залежать від сервісу.
 
     {{< text yaml >}}
-apiVersion: extensions.istio.io/v1alpha1
-kind: WasmPlugin
-metadata:
-  name: istio-attributegen-filter
-spec:
-  selector:
-    matchLabels:
-      app: reviews
-  url: https://storage.googleapis.com/istio-build/proxy/attributegen-359dcd3a19f109c50e97517fe6b1e2676e870c4d.wasm
-  imagePullPolicy: Always
-  phase: AUTHN
-  pluginConfig:
-    attributes:
-    - output_attribute: "istio_operationId"
-      match:
-        - value: "ListReviews"
-          condition: "request.url_path == '/reviews' && request.method == 'GET'"
-        - value: "GetReview"
-          condition: "request.url_path.matches('^/reviews/[[:alnum:]]*$') && request.method == 'GET'"
-        - value: "CreateReview"
-          condition: "request.url_path == '/reviews/' && request.method == 'POST'"
----
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: custom-tags
-spec:
-  metrics:
-    - overrides:
-        - match:
-            metric: REQUEST_COUNT
-            mode: CLIENT_AND_SERVER
-          tagOverrides:
-            request_operation:
-              value: filter_state['wasm.istio_operationId']
-      providers:
-        - name: prometheus
+    apiVersion: extensions.istio.io/v1alpha1
+    kind: WasmPlugin
+    metadata:
+      name: istio-attributegen-filter
+    spec:
+      selector:
+        matchLabels:
+          app: reviews
+      url: https://storage.googleapis.com/istio-build/proxy/attributegen-359dcd3a19f109c50e97517fe6b1e2676e870c4d.wasm
+      imagePullPolicy: Always
+      phase: AUTHN
+      pluginConfig:
+        attributes:
+        - output_attribute: "istio_operationId"
+          match:
+            - value: "ListReviews"
+              condition: "request.url_path == '/reviews' && request.method == 'GET'"
+            - value: "GetReview"
+              condition: "request.url_path.matches('^/reviews/[[:alnum:]]*$') && request.method == 'GET'"
+            - value: "CreateReview"
+              condition: "request.url_path == '/reviews/' && request.method == 'POST'"
+    ---
+    apiVersion: telemetry.istio.io/v1
+    kind: Telemetry
+    metadata:
+      name: custom-tags
+    spec:
+      metrics:
+        - overrides:
+            - match:
+                metric: REQUEST_COUNT
+                mode: CLIENT_AND_SERVER
+              tagOverrides:
+                request_operation:
+                  value: filter_state['wasm.istio_operationId']
+          providers:
+            - name: prometheus
     {{< /text >}}
 
 1. Застосуйте ваші зміни за допомогою наступної команди:
@@ -82,51 +82,51 @@ spec:
     У цьому прикладі класифікуються різні відповіді, наприклад, групування всіх кодів відповіді в діапазоні `200` як вимір `2xx`.
 
     {{< text yaml >}}
-apiVersion: extensions.istio.io/v1alpha1
-kind: WasmPlugin
-metadata:
-  name: istio-attributegen-filter
-spec:
-  selector:
-    matchLabels:
-      app: productpage
-  url: https://storage.googleapis.com/istio-build/proxy/attributegen-359dcd3a19f109c50e97517fe6b1e2676e870c4d.wasm
-  imagePullPolicy: Always
-  phase: AUTHN
-  pluginConfig:
-    attributes:
-      - output_attribute: istio_responseClass
-        match:
-          - value: 2xx
-            condition: response.code >= 200 && response.code <= 299
-          - value: 3xx
-            condition: response.code >= 300 && response.code <= 399
-          - value: "404"
-            condition: response.code == 404
-          - value: "429"
-            condition: response.code == 429
-          - value: "503"
-            condition: response.code == 503
-          - value: 5xx
-            condition: response.code >= 500 && response.code <= 599
-          - value: 4xx
-            condition: response.code >= 400 && response.code <= 499
----
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: custom-tags
-spec:
-  metrics:
-    - overrides:
-        - match:
-            metric: REQUEST_COUNT
-            mode: CLIENT_AND_SERVER
-          tagOverrides:
-            response_code:
-              value: filter_state['wasm.istio_responseClass']
-      providers:
-        - name: prometheus
+    apiVersion: extensions.istio.io/v1alpha1
+    kind: WasmPlugin
+    metadata:
+      name: istio-attributegen-filter
+    spec:
+      selector:
+        matchLabels:
+          app: productpage
+      url: https://storage.googleapis.com/istio-build/proxy/attributegen-359dcd3a19f109c50e97517fe6b1e2676e870c4d.wasm
+      imagePullPolicy: Always
+      phase: AUTHN
+      pluginConfig:
+        attributes:
+          - output_attribute: istio_responseClass
+            match:
+              - value: 2xx
+                condition: response.code >= 200 && response.code <= 299
+              - value: 3xx
+                condition: response.code >= 300 && response.code <= 399
+              - value: "404"
+                condition: response.code == 404
+              - value: "429"
+                condition: response.code == 429
+              - value: "503"
+                condition: response.code == 503
+              - value: 5xx
+                condition: response.code >= 500 && response.code <= 599
+              - value: 4xx
+                condition: response.code >= 400 && response.code <= 499
+    ---
+    apiVersion: telemetry.istio.io/v1
+    kind: Telemetry
+    metadata:
+      name: custom-tags
+    spec:
+      metrics:
+        - overrides:
+            - match:
+                metric: REQUEST_COUNT
+                mode: CLIENT_AND_SERVER
+              tagOverrides:
+                response_code:
+                  value: filter_state['wasm.istio_responseClass']
+          providers:
+            - name: prometheus
     {{< /text >}}
 
 1. Застосуйте ваші зміни за допомогою наступної команди:

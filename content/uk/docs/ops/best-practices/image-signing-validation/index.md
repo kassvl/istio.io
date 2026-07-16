@@ -24,10 +24,10 @@ Cosign — це інструмент, розроблений у рамках п
 1. Перевірте підпис бінарного файлу `cosign`:
 
    {{< text bash >}}
-$ openssl dgst -sha256 \
-    -verify <(curl -ssL https://raw.githubusercontent.com/sigstore/cosign/main/release/release-cosign.pub) \
-    -signature <(cat /path/to/cosign.sig | base64 -d) \
-    /path/to/cosign-binary
+   $ openssl dgst -sha256 \
+       -verify <(curl -ssL https://raw.githubusercontent.com/sigstore/cosign/main/release/release-cosign.pub) \
+       -signature <(cat /path/to/cosign.sig | base64 -d) \
+       /path/to/cosign-binary
    {{< /text >}}
 
 1. Зробіть бінарний файл виконуваним (`chmod +x`) і перемістіть його в теку, що знаходиться в `PATH`.

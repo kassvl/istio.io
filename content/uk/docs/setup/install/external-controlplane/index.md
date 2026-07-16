@@ -230,6 +230,7 @@ $ export REMOTE_CLUSTER_NAME=<your remote cluster name>
       --create-service-account=false | \
       kubectl apply -f - --context="${CTX_EXTERNAL_CLUSTER}"
     {{< /text >}}
+
     {{< tip >}}
     Якщо ви працюєте в `kind`, то вам потрібно передати `--server https://<api-server-node-ip>:6443` в команду `istioctl create-remote-secret`, де `<api-server-node-ip>` — це IP-адреса вузла, на якому запущено сервер API.
     {{< /tip >}}

@@ -51,8 +51,8 @@ Istio надає широкі функціональні можливості з
 
 - **Мітки podʼів**: Рекомендуємо явно оголошувати podʼи з ідентифікатором застосунку та версією, використовуючи мітку podʼа. Ці мітки додають контекстну інформацію до метрик та телеметрії, які збирає Istio. Кожне з цих значень зчитується з кількох міток, впорядкованих від найвищого до найнижчого пріоритету:
 
-  - Назва застосунку: `service.istio.io/canonical-name`, `app.kubernetes.io/name` або `app`.
-  - Версія застосунку: `service.istio.io/canonical-revision`, `app.kubernetes.io/version` або `version`.
+    - Назва застосунку: `service.istio.io/canonical-name`, `app.kubernetes.io/name` або `app`.
+    - Версія застосунку: `service.istio.io/canonical-revision`, `app.kubernetes.io/version` або `version`.
 
 - **Іменовані порти сервісу**: Порти сервісу можуть бути опціонально названі для явного зазначення протоколу. Дивіться [Вибір протоколу](/docs/ops/configuration/traffic-management/protocol-selection/) для отримання додаткової інформації. Якщо pod належить до кількох [сервісів Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/), сервіси не можуть використовувати той самий номер порту для різних протоколів, наприклад HTTP і TCP.
 

@@ -128,7 +128,7 @@ status: Experimental
     $ kubectl apply -f ./selfsigned-issuer.yaml
     {{< /text >}}
 
-## Перевірте, що для кожного кластерного емітента створені секрети.{#verify-secrets-are-created-for-each-cluster-issuer}
+## Перевірте, що для кожного кластерного емітента створені секрети {#verify-secrets-are-created-for-each-cluster-issuer}
 
 {{< text bash >}}
 $ kubectl get secret -n cert-manager -l controller.cert-manager.io/fao=true

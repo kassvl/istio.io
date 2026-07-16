@@ -146,7 +146,7 @@ $ kubectl delete service my-httpbin
     EOF
     {{< /text >}}
 
-2.  Створіть точки доступу для вашого сервісу. Виберіть кілька IP-адрес зі списку діапазонів Вікіпедії (https://www.mediawiki.org/wiki/Wikipedia_Zero/IP_Addresses).
+2.  Створіть точки доступу для вашого сервісу. Виберіть кілька IP-адрес зі списку діапазонів Вікіпедії (<https://www.mediawiki.org/wiki/Wikipedia_Zero/IP_Addresses>).
 
     {{< text bash >}}
     $ kubectl apply -f - <<EOF

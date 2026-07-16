@@ -29,8 +29,8 @@ test: yes
     {{< /text >}}
 
 * За допомогою наведеної вище конфігурації потік запитів буде виглядати так:
-  * `productpage` → `reviews:v2` → `ratings` (лише для користувача `jason`)
-  * `productpage` → `reviews:v1` (для всіх інших)
+    * `productpage` → `reviews:v2` → `ratings` (лише для користувача `jason`)
+    * `productpage` → `reviews:v1` (для всіх інших)
 
 ## Інʼєкція збою затримки HTTP {#injecting-an-http-delay-fault}
 

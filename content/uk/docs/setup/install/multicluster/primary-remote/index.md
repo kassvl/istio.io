@@ -142,6 +142,7 @@ $ kubectl apply --context="${CTX_CLUSTER1}" -n istio-system -f \
 {{< text bash >}}
 $ sed 's/{{.Revision}}/rev/g' @samples/multicluster/expose-istiod-rev.yaml.tmpl@ | kubectl apply --context="${CTX_CLUSTER1}" -n istio-system -f -
 {{< /text >}}
+
 {{< /warning >}}
 
 ## Встановлення панелі управління для `cluster2` {#set-the-control-plane-cluster-for-cluster2}

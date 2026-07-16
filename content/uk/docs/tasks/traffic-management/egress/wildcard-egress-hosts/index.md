@@ -266,7 +266,7 @@ EOF
 
 {{< /tabset >}}
 
-2)  Створіть `ServiceEntry` для сервера призначення, _www.wikipedia.org_:
+2)  Створіть `ServiceEntry` для сервера призначення, _[www.wikipedia.org](https://www.wikipedia.org)_:
 
     {{< text bash >}}
     $ kubectl apply -f - <<EOF

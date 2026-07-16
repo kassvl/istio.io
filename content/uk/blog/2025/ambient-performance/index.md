@@ -42,9 +42,9 @@ keywords: [istio,performance,ambient]
 * Istio: версія 1.26 (передреліз), стандартні налаштування
 * <a href="https://linkerd.io/">Linkerd</a>: версія `edge-25.2.2`, стандартні налаштування
 * <a href="https://cilium.io/">Cilium</a>: версія `v1.16.6` з `kubeProxyReplacement=true`
-  * WireGuard використовує `encryption.type=wireguard`
-  * IPsec використовує `encryption.type=ipsec` з алгоритмом `GCM-128-AES`
-  * Крім того, обидва режими були протестовані з усіма рекомендаціями в <a href="https://docs.cilium.io/en/stable/operations/performance/tuning/">посібнику з налаштування продуктивності Cilium</a> (включаючи `netkit`, `native` режим маршрутизації, BIGTCP (для WireGuard; IPsec несумісний), BPF masquerade та BBR bandwidth manager). Однак результати були однаковими з цими налаштуваннями та без них, тому повідомляється лише один результат.
+    * WireGuard використовує `encryption.type=wireguard`
+    * IPsec використовує `encryption.type=ipsec` з алгоритмом `GCM-128-AES`
+    * Крім того, обидва режими були протестовані з усіма рекомендаціями в <a href="https://docs.cilium.io/en/stable/operations/performance/tuning/">посібнику з налаштування продуктивності Cilium</a> (включаючи `netkit`, `native` режим маршрутизації, BIGTCP (для WireGuard; IPsec несумісний), BPF masquerade та BBR bandwidth manager). Однак результати були однаковими з цими налаштуваннями та без них, тому повідомляється лише один результат.
 * <a href="https://www.tigera.io/project-calico/">Calico</a>: версія `v3.29.2` з `calicoNetwork.linuxDataplane=BPF` та `wireguardEnabled=true`
 * <a href="https://kindnet.es/">Kindnet</a>: версія `v1.8.5` з `--ipsec-overlay=true`.
 
