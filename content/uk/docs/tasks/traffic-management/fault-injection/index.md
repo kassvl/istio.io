@@ -13,13 +13,13 @@ test: yes
 
 ## Перш ніж почати {#before-you-begin}
 
-* Налаштуйте Istio, дотримуючись інструкцій у [керівництві з встановлення](/docs/setup/).
+- Налаштуйте Istio, дотримуючись інструкцій у [керівництві з встановлення](/docs/setup/).
 
-* Розгорніть демонстраційний застосунок [Bookinfo](/docs/examples/bookinfo/) разом із [типовими правилами призначення](/docs/examples/bookinfo/#apply-default-destination-rules).
+- Розгорніть демонстраційний застосунок [Bookinfo](/docs/examples/bookinfo/) разом із [типовими правилами призначення](/docs/examples/bookinfo/#apply-default-destination-rules).
 
-* Ознайомтеся з обговоренням інʼєкцій збоїв у концепціях [Управління трафіком](/docs/concepts/traffic-management).
+- Ознайомтеся з обговоренням інʼєкцій збоїв у концепціях [Управління трафіком](/docs/concepts/traffic-management).
 
-* Застосуйте маршрутизацію версій застосунку, виконавши або завдання
+- Застосуйте маршрутизацію версій застосунку, виконавши або завдання
   [маршрутизації запитів](/docs/tasks/traffic-management/request-routing/), або
   виконайте наступні команди:
 
@@ -28,9 +28,9 @@ test: yes
     $ kubectl apply -f @samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml@
     {{< /text >}}
 
-* За допомогою наведеної вище конфігурації потік запитів буде виглядати так:
-    * `productpage` → `reviews:v2` → `ratings` (лише для користувача `jason`)
-    * `productpage` → `reviews:v1` (для всіх інших)
+- За допомогою наведеної вище конфігурації потік запитів буде виглядати так:
+    - `productpage` → `reviews:v2` → `ratings` (лише для користувача `jason`)
+    - `productpage` → `reviews:v1` (для всіх інших)
 
 ## Інʼєкція збою затримки HTTP {#injecting-an-http-delay-fault}
 

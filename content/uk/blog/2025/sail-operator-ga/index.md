@@ -16,11 +16,11 @@ Sail Operator розроблений, щоб зменшити складніст
 
 Основними ресурсами, що входять до складу Sail Operator, є
 
-* `Istio`: керує панеллю управлінняIstio.
-* `IstioRevision`: представляє ревізію панелі управління.
-* `IstioRevisionTag`: представляє стабільний теґ ревізії, який функціонує як псевдонім для ревізії панелі управління Istio.
-* `IstioCNI`: керує агентом вузла CNI Istio.
-* `ZTunnel`: керує режимом оточення ztunnel DaemonSet (функція Alpha).
+- `Istio`: керує панеллю управлінняIstio.
+- `IstioRevision`: представляє ревізію панелі управління.
+- `IstioRevisionTag`: представляє стабільний теґ ревізії, який функціонує як псевдонім для ревізії панелі управління Istio.
+- `IstioCNI`: керує агентом вузла CNI Istio.
+- `ZTunnel`: керує режимом оточення ztunnel DaemonSet (функція Alpha).
 
 {{< idea >}}
 Якщо ви мігруєте з [since-removed Istio in-cluster operator](/blog/2024/in-cluster-operator-deprecation-announcement/), ви можете ознайомитися з цим розділом нашої [документації](https://github.com/istio-ecosystem/sail-operator/tree/main/docs#migrating-from-istio-in-cluster-operator), де ми пояснюємо еквівалентність ресурсів, або ви також можете спробувати наш [конвертер ресурсів](https://github.com/istio-ecosystem/sail-operator/tree/main/docs#converter-script), щоб легко перетворити ваш ресурс `IstioOperator` на ресурс `Istio`.
@@ -28,12 +28,12 @@ Sail Operator розроблений, щоб зменшити складніст
 
 ## Основні функції та підтримка {#main-features-and-support}
 
-* Кожним компонентом панелі управління Istio керує Sail Operator незалежно за допомогою спеціальних власних ресурсів Kubernetes (CR). Sail Operator надає окремі CRD для таких компонентів, як `Istio`, `IstioCNI` та `ZTunnel`, що дозволяє вам налаштовувати, керувати та оновлювати їх окремо. Крім того, існують CRD для `IstioRevision` та `IstioRevisionTag` для керування ревізіями панелі управління Istio.
-* Підтримка декількох версій Istio. Наразі підтримується версія 1.0.0: 1.24.3, 1.24.2, 1.24.1, 1.23.5, 1.23.4, 1.23.3, 1.23.0.
-* Підтримуються дві стратегії оновлення: `InPlace` і `RevisionBased`. Для отримання додаткової інформації про підтримувані типи оновлень зверніться до нашої документації.
-* Підтримка багатокластерної [моделі розгортання](/docs/setup/install/multicluster/) Istio: multi-primary, primary-remote, зовнішня панель управління. Більше інформації та прикладів у нашій [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#multi-cluster).
-* Підтримка режиму Ambient у версії Alpha: зверніться до нашої спеціальної [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/common/istio-ambient-mode.md).
-* Надбудови управляються окремо від Sail Operator. Вони можуть бути легко інтегровані з Sail Operator, зверніться до цього розділу [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#addons) за прикладами та додатковою інформацією.
+- Кожним компонентом панелі управління Istio керує Sail Operator незалежно за допомогою спеціальних власних ресурсів Kubernetes (CR). Sail Operator надає окремі CRD для таких компонентів, як `Istio`, `IstioCNI` та `ZTunnel`, що дозволяє вам налаштовувати, керувати та оновлювати їх окремо. Крім того, існують CRD для `IstioRevision` та `IstioRevisionTag` для керування ревізіями панелі управління Istio.
+- Підтримка декількох версій Istio. Наразі підтримується версія 1.0.0: 1.24.3, 1.24.2, 1.24.1, 1.23.5, 1.23.4, 1.23.3, 1.23.0.
+- Підтримуються дві стратегії оновлення: `InPlace` і `RevisionBased`. Для отримання додаткової інформації про підтримувані типи оновлень зверніться до нашої документації.
+- Підтримка багатокластерної [моделі розгортання](/docs/setup/install/multicluster/) Istio: multi-primary, primary-remote, зовнішня панель управління. Більше інформації та прикладів у нашій [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#multi-cluster).
+- Підтримка режиму Ambient у версії Alpha: зверніться до нашої спеціальної [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/common/istio-ambient-mode.md).
+- Надбудови управляються окремо від Sail Operator. Вони можуть бути легко інтегровані з Sail Operator, зверніться до цього розділу [документації](https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#addons) за прикладами та додатковою інформацією.
 
 ## Чому зараз? {#why-now}
 
@@ -46,10 +46,10 @@ Sail Operator розроблений, щоб зменшити складніст
 
 Необхідні умови:
 
-* Працюючий кластер
-* Helm
-* Kubectl
-* Istioctl
+- Працюючий кластер
+- Helm
+- Kubectl
+- Istioctl
 
 ### Встановіть Sail Operator за допомогою Helm {#install-the-sail-operator-using-helm}
 
@@ -112,7 +112,7 @@ EOF
 
 Перевірте стан створених ресурсів:
 
-* podʼи `istiod` запущено
+- podʼи `istiod` запущено
 
     {{< text bash >}}
     $ kubectl get pods -n istio-system
@@ -120,7 +120,7 @@ EOF
     istiod-default-v1-24-2-bd8458c4-jl8zm   1/1     Running   0          3m45s
     {{< /text >}}
 
-* ресурс `Istio` створено
+- ресурс `Istio` створено
 
     {{< text bash >}}
     $ kubectl get istio
@@ -128,7 +128,7 @@ EOF
     default   1           1       1        default-v1-24-2   Healthy   v1.24.2   4m27s
     {{< /text >}}
 
-* ресурс `IstioRevisionTag` створено
+- ресурс `IstioRevisionTag` створено
 
     {{< text bash >}}
     $ kubectl get istiorevisiontag
@@ -204,9 +204,9 @@ default-v1-24-3          True    Healthy   True     v1.24.3   92s
 
 Sail Operator автоматично визначає, чи використовується дана панель управління Istio, і записує цю інформацію в стан «In Use», який ви бачите вище. Наразі всі `IstioRevisions` та наш `IstioRevisionTag` вважаються «In Use»:
 
-* Стара ревізія `default-v1-24-2` вважається такою, що використовується, оскільки на неї є посилання у sidecar демонстраційного застосунку.
-* Нова ревізія `default-v1-24-3` вважається такою, що використовується, оскільки на неї посилається теґ.
-* Теґ вважається таким, що використовується, оскільки на нього посилається простір імен демонстраційного застосунку.
+- Стара ревізія `default-v1-24-2` вважається такою, що використовується, оскільки на неї є посилання у sidecar демонстраційного застосунку.
+- Нова ревізія `default-v1-24-3` вважається такою, що використовується, оскільки на неї посилається теґ.
+- Теґ вважається таким, що використовується, оскільки на нього посилається простір імен демонстраційного застосунку.
 
 Переконайтеся, що запущено два pod'и панелі управління, по одному для кожної ревізії:
 
@@ -241,7 +241,7 @@ sleep-6f87fcf556-k9nh9.sample     Kubernetes     SYNCED (29s)     SYNCED (29s)  
 
 Коли `IstioRevision` більше не використовується і не є активною ревізією ресурсу `Istio` (наприклад, коли це не та версія, що вказана у полі `spec.version`), Sail Operator видалить її після пільгового періоду, який стандартно становить 30 секунд. Підтвердьте видалення старої панелі управління та `IstioRevision`:
 
-* Pod старої панелі управління видалено
+- Pod старої панелі управління видалено
 
     {{< text bash >}}
     $ kubectl get pods -n istio-system
@@ -249,7 +249,7 @@ sleep-6f87fcf556-k9nh9.sample     Kubernetes     SYNCED (29s)     SYNCED (29s)  
     istiod-default-v1-24-3-68df97dfbb-v7ndm   1/1     Running   0          10m
     {{< /text >}}
 
-* Старий ресурс `IstioRevision` видалено
+- Старий ресурс `IstioRevision` видалено
 
     {{< text bash >}}
     $ kubectl get istiorevision
@@ -257,7 +257,7 @@ sleep-6f87fcf556-k9nh9.sample     Kubernetes     SYNCED (29s)     SYNCED (29s)  
     default-v1-24-3          True    Healthy   True     v1.24.3   13m
     {{< /text >}}
 
-* Ресурс `Istio`тепер має тільки одну ревізію
+- Ресурс `Istio`тепер має тільки одну ревізію
 
     {{< text bash >}}
     $ kubectl get istio
